@@ -107,8 +107,6 @@ if __name__ == "__main__":
 
     parser.add_argument("--notest_during_training", action='store_true',
                         help='flag whether to test during training')
-    parser.add_argument("--disable_visualization", action='store_true',
-                        help='flag whether to enable TensorBoard visualization')
     parser.add_argument('--disable_gpu', action='store_true',
                         help='flag whether to disable GPU')
     args = parser.parse_args()
