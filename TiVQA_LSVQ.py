@@ -15,7 +15,7 @@ def split(full_list, shuffle=False, ratio=0.8):
     train_len = int(n_total * ratio)
     if shuffle:
         random.shuffle(full_list)
-    train = full_list[:train_len]
+    train = full_list[:train_len + 1]
     test = full_list[train_len + 1:]
     return train, test
 
