@@ -145,9 +145,9 @@ if __name__ == "__main__":
 
     Info1 = pd.read_csv(datainfo1, encoding='gbk', nrows=17223)
     Info2 = pd.read_csv(datainfo2, encoding='gbk', nrows=2794)
-    Info3 = pd.read_csv('/home/zax/labels_train_test.csv', encoding='gbk', skiprows=17223)
+    Info3 = pd.read_csv('./data/labels_train_test.csv', encoding='gbk', skiprows=17223)
     Info3.columns = ['name', 'height', 'width', 'mos', 'frame_number']
-    Info4 = pd.read_csv('/home/zax/labels_test_1080p.csv', encoding='gbk', skiprows=2794)
+    Info4 = pd.read_csv('./data/labels_test_1080p.csv', encoding='gbk', skiprows=2794)
     Info4.columns = ['name', 'p1', 'p2', 'p3', 'height', 'width', 'mos_p1', 'mos_p2', 'mos_p3', 'mos', 'frame_number',
                      'fn_last_frame', 'left_p1', 'right_p1', 'top_p1', 'bottom_p1', 'start_p1', 'end_p1', 'left_p2',
                      'right_p2', 'top_p2', 'bottom_p2', 'start_p2', 'end_p2', 'left_p3', 'right_p3', 'top_p3',
