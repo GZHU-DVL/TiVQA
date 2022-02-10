@@ -58,7 +58,7 @@ def TP(q, tau=44,beta=0.52):
 
 
 class TiVQA(nn.Module):
-    def __init__(self, input_size=8192, reduced_size=248, hidden_size=64): #hidden_size 隐藏层的神经元数量，也就是隐藏层的特征数量。
+    def __init__(self, input_size=8192, reduced_size=248, hidden_size=64): 
         super(TiVQA, self).__init__()
         self.hidden_size = hidden_size
         self.ann = ANN(input_size, reduced_size, 1)
@@ -97,13 +97,12 @@ if __name__ == "__main__":
                         help='model name (default: TiVQA)')
     parser.add_argument('--exp_id', default=0, type=int,
                         help='exp id for train-val-test splits (default: 0)')
-    # train-val-test 训练-验证-测试
     parser.add_argument('--test_ratio', type=float, default=0.2,
                         help='test ratio (default: 0.2)')
     parser.add_argument('--val_ratio', type=float, default=0.2,
                         help='val ratio (default: 0.2)')
 
-    parser.add_argument('--weight_decay', type=float, default=0.0,  #:权衰量,用于防止过拟合
+    parser.add_argument('--weight_decay', type=float, default=0.0,  
                         help='weight decay (default: 0.0)')
 
     parser.add_argument("--notest_during_training", action='store_true',
