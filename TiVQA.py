@@ -12,8 +12,6 @@ from scipy import stats
 from tensorboardX import SummaryWriter
 import datetime
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
-
 
 class VQADataset(Dataset):
     def __init__(self, features_dir='/', index=None, max_len=830, feat_dim=8192, scale=93.38):
