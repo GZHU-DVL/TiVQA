@@ -88,9 +88,6 @@ if __name__ == "__main__":
                         help='learning rate (default: 0.00001)')
     parser.add_argument('--batch_size', type=int, default=16,
                         help='input batch size for training (default: 16)')
-    parser.add_argument('--epochs', type=int, default=2000,
-                        help='number of epochs to train (default: 2000)')
-
     parser.add_argument('--database', default='KoNViD-1k', type=str,
                         help='database name (default: KoNViD-1k)')
     parser.add_argument('--model', default='TiVQA', type=str,
