@@ -12,7 +12,6 @@ import random
 from argparse import ArgumentParser
 from skimage.feature import local_binary_pattern
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 class VideoDataset(Dataset):
 
     def __init__(self, videos_dir, video_list, mos, video_format='RGB', width=None, height=None):
@@ -85,7 +84,7 @@ class ResNet50(torch.nn.Module):
     def __init__(self):
         super(ResNet50, self).__init__()
         self.features = nn.Sequential(*list(models.resnet50(pretrained=True).children())[:-2])
-        for p in self.features.parameters():  # 获取网络的参数
+        for p in self.features.parameters(): 
             p.requires_grad = False
 
     def forward(self, x1, x2):
