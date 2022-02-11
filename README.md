@@ -20,3 +20,7 @@ First, you need to run Features extraction.py to extract content-dependency feat
 * tensorboardX==2.2
 * tensorflow-gpu==2.2.0
 * numpy==1.19.5
+
+License
+---
+This source code is made available for research purpose only.
