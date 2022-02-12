@@ -135,7 +135,7 @@ if __name__ == "__main__":
         features_dir = '/data/aoxiang/TiVQA/LBP_P10_R4_CNN_features_LSVQ/'
         datainfo1 = './data/labels_train_test.csv'
         datainfo2 = './data/labels_test_1080p.csv'
-        trained_model_file = './models/TiVQA-KoNViD-1k-EXP44--0.52--16--248_64--LBP_10_4'
+        trained_model_file = './models/TiVQA-LSVQ-EXP20--0.5--20--208_56--LBP_10_4'
 
     print('EXP ID: {}'.format(args.seed))
     print(args.database)
