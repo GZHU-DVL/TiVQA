@@ -22,6 +22,13 @@ First, you need to run Features Extraction.py to extract content-dependency feat
 * tensorflow-gpu==2.2.0
 * numpy==1.19.5
 
+Correct
+---
+Due to experimental error, we apologize for the error in the experimental data of KonNViD-1k dataset, and hereby correct it.
+
+KonNViD-1k     SRCC: 0.818
+               PLCC: 0.816
+               
 License
 ---
 This source code is made available for research purpose only.
