@@ -28,6 +28,13 @@ python main.py  --database==database --reduced_size=reduced_size --hidden_size==
 ```
 Please note that our parameter tuning for different datasets is only to verify the conjecture in this paper that different datasets apply to different parameters.
 
+## Testing
+After extracting the content-aware and texture features of the dataset, you can use the models already trained in the directory "/models/" to test the performance.
+```
+python test_performance.py  --database==database --reduced_size=reduced_size --hidden_size==hidden_size \
+                --batch_size==batch_size  --tau==tau  --beta==beta
+```
+
 ## Requirment
 * torch==1.6.0
 * torchvision==0.7.0
