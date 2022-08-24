@@ -28,7 +28,15 @@ Due to experimental error, we apologize for the error in the experimental data o
 
 KonNViD-1k     SRCC: 0.818
                PLCC: 0.816
-               
+             
+Acknowledgement
+---
+This cobebase is heavily inspired by VSFA (Li et al., ACM2019).
+
+Great appreciation for their excellent works.
+
 License
 ---
 This source code is made available for research purpose only.
+
+
