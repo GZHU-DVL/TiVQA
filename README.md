@@ -18,7 +18,7 @@ First, you need to download the dataset and copy the local address into the vide
 ```
 python Feature Extraction.py --database=database --frame_batch_size=16 \
 ```
-Please note that when extracting the content-aware and texture features, you can choose the size of frame_batch_size according to your GPU. After running the [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py), you can get the content-aware and texture features of each video in the directory "LBP_P10_R4_std_CNN_features_KoNViD-1k/".
+Please note that when extracting the content-aware and texture features, you can choose the size of frame_batch_size according to your GPU. After running the [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py), you can get the content-aware and texture features of each video in the directory "LBP_P10_R4_std_CNN_features_dataset/".
 
 ## Requirment
 * torch==1.6.0
