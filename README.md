@@ -8,7 +8,11 @@ Abstract: Automatically evaluating the quality of in-the-wild videos is challeng
 
 Usage
 ---
-First, you need to run Features Extraction.py to extract content-dependency features and texture features. Note that you need to specify specific datasets and corresponding paths, where the default dataset is koNViD-1k. Then run TiVQA.py to test the results. 
+Dataset Preparation
+
+We test TiVQA on four datasets, including [KoNViD-1k](http://database.mmsp-kn.de/konvid-1k-database.html), [CVD2014](https://www.mv.helsinki.fi/home/msjnuuti/CVD2014/), [LIVE-Qualcomm](http://live.ece.utexas.edu/research/incaptureDatabase/index.html), and [LSVQ](https://github.com/baidut/PatchVQ), download the datasets from the official website. 
+
+First, you need to download the dataset and copy the local address into the videos_dir of [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py). Note that you need to specific datasets and corresponding paths, where the default dataset is koNViD-1k. Then run TiVQA.py to test the results. 
 
 ## Requirment
 * torch==1.6.0
