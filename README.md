@@ -12,7 +12,7 @@ Usage
 **VQA Datasets.**
 We test TiVQA on four datasets, including [KoNViD-1k](http://database.mmsp-kn.de/konvid-1k-database.html), [CVD2014](https://www.mv.helsinki.fi/home/msjnuuti/CVD2014/), [LIVE-Qualcomm](http://live.ece.utexas.edu/research/incaptureDatabase/index.html), and [LSVQ](https://github.com/baidut/PatchVQ), download the datasets from the official website. 
 
-## Extract the content-aware and texture features
+### Extract the content-aware and texture features
 First, you need to download the dataset and copy the local address into the videos_dir of [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py). Due to the particularity of the LSVQ dataset, we give a version for extracting LSVQ in [Features Extraction_LSVQ.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction_LSVQ.py). In it, we mark the video sequence numbers that do not exist in the current version of LSVQ.
 
 ```
@@ -21,21 +21,21 @@ python Feature Extraction_LSVQ.py --database=LSVQ --frame_batch_size=16 \
 ```
 Please note that when extracting the content-aware and texture features, you can choose the size of frame_batch_size according to your GPU. After running the [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py) or [Features Extraction_LSVQ.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction_LSVQ.py), you can get the content-aware and texture features of each video in the directory "LBP_P10_R4_std_CNN_features_dataset/".
 
-## Training and Evaluating
+### Training and Evaluating
 ```
 python main.py  --database==database --reduced_size=reduced_size --hidden_size==hidden_size \
                 --batch_size==batch_size  --tau==tau  --beta==beta
 ```
 Please note that our parameter tuning for different datasets is only to verify the conjecture in this paper that different datasets apply to different parameters.
 
-## Testing
+### Testing
 After extracting the content-aware and texture features of the dataset, you can use the models already trained in the directory "./models/" to test the performance.
 ```
 python test_performance.py  --database==database --reduced_size=reduced_size --hidden_size==hidden_size \
                 --batch_size==batch_size  --tau==tau  --beta==beta
 ```
 
-## Requirment
+### Requirment
 * torch==1.6.0
 * torchvision==0.7.0
 * h5py==2.10.0
