@@ -113,7 +113,7 @@ if __name__ == "__main__":
     torch.utils.backcompat.broadcast_warning.enabled = True
 
     if args.database == 'KoNViD-1k':
-        features_dir = '/data/aoxiang/TiVQA/LBP_P10_R4_std_CNN_features_KoNViD-1k/'  # features dir
+        features_dir = 'LBP_P10_R4_std_CNN_features_KoNViD-1k/'  # features dir
         datainfo = 'data/KoNViD-1kinfo.mat'
     if args.database == 'CVD2014':
         features_dir = 'LBP_P10_R4_std_CNN_features_CVD2014/'
