@@ -13,10 +13,11 @@ Usage
 We test TiVQA on four datasets, including [KoNViD-1k](http://database.mmsp-kn.de/konvid-1k-database.html), [CVD2014](https://www.mv.helsinki.fi/home/msjnuuti/CVD2014/), [LIVE-Qualcomm](http://live.ece.utexas.edu/research/incaptureDatabase/index.html), and [LSVQ](https://github.com/baidut/PatchVQ), download the datasets from the official website. 
 
 ## Extract the content-aware and texture features
-First, you need to download the dataset and copy the local address into the videos_dir of [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py). Note that you need to specific datasets and corresponding paths, where the default dataset is koNViD-1k.
+First, you need to download the dataset and copy the local address into the videos_dir of [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py). Note that you need to specific datasets and corresponding paths, where the default dataset is koNViD-1k. Due to the particularity of the LSVQ dataset, we give a version for extracting LSVQ in [Features Extraction_LSVQ.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction_LSVQ.py). In it, we mark the video sequence numbers that do not exist in the current version of LSVQ.
 
 ```
 python Feature Extraction.py --database=database --frame_batch_size=16 \
+python Feature Extraction_LSVQ.py --database=LSVQ --frame_batch_size=16 \
 ```
 Please note that when extracting the content-aware and texture features, you can choose the size of frame_batch_size according to your GPU. After running the [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py), you can get the content-aware and texture features of each video in the directory "LBP_P10_R4_std_CNN_features_dataset/".
 
