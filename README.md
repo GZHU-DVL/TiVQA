@@ -42,7 +42,7 @@ A.-X. Zhang and Y.-G Wang, “Texture information boosts video quality assessmen
 ```
 Meanwhile, you may also consider citing Li's work,
 ```
-D. Li, T. Jiang, and M. Jiang, “Quality assessment of in-thewild videos,” in ACM International Conference on Multimedia (MM), pp. 2351-2359, 2019.
+D. Li, T. Jiang, and M. Jiang, “Quality assessment of in-the-wild videos,” in ACM International Conference on Multimedia (MM), pp. 2351-2359, 2019.
 ```
 
 License
