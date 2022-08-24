@@ -156,10 +156,10 @@ if __name__ == "__main__":
 
     if not os.path.exists('models'):
         os.makedirs('models')
-    trained_model_file = 'models/{}-{}-EXP{}--{}--{}--{}--{}--{}'.format(args.model, args.database, args.tau,args.beta, args.batch_size,args.reduced_size,args.hidden_size,'LBP_10_4')
+    trained_model_file = 'models/{}-{}-{}--{}--{}--{}--{}--{}'.format(args.model, args.database, args.tau,args.beta, args.batch_size,args.reduced_size,args.hidden_size,'LBP_10_4')
     if not os.path.exists('results'):
         os.makedirs('results')
-    save_result_file = 'results/{}-{}-EXP{}--{}--{}--{}--{}--{}'.format(args.model, args.database, args.tau,args.beta, args.batch_size,args.reduced_size,args.hidden_size,'LBP_10_4')
+    save_result_file = 'results/{}-{}-{}--{}--{}--{}--{}--{}'.format(args.model, args.database, args.tau,args.beta, args.batch_size,args.reduced_size,args.hidden_size,'LBP_10_4')
 
     if not args.disable_visualization:
         writer = SummaryWriter(log_dir='{}/EXP{}-{}-{}-{}-{}-{}-{}'.format(args.log_dir, args.exp_id, args.database, args.model,
