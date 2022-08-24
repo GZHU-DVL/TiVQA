@@ -21,6 +21,13 @@ python Feature Extraction_LSVQ.py --database=LSVQ --frame_batch_size=16 \
 ```
 Please note that when extracting the content-aware and texture features, you can choose the size of frame_batch_size according to your GPU. After running the [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py) or [Features Extraction_LSVQ.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction_LSVQ.py), you can get the content-aware and texture features of each video in the directory "LBP_P10_R4_std_CNN_features_dataset/".
 
+## Training and Evaluating
+```
+python main.py  --database==database --reduced_size=reduced_size --hidden_size==hidden_size \
+                --batch_size==batch_size  --tau==tau  --beta==beta
+```
+
+
 ## Requirment
 * torch==1.6.0
 * torchvision==0.7.0
