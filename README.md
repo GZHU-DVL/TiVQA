@@ -35,10 +35,14 @@ This cobebase is heavily inspired by [VSFA](https://github.com/lidq92/VSFA) (Li 
 
 Great appreciation for their excellent works.
 
-If you find this repo helpful to your research, we sincerely appreciate it if you cite our paper.:smiley:
+If you find this repo helpful to your research, we sincerely appreciate it if you cite our paper.:smiley::smiley:
 
 ```
 A.-X. Zhang and Y.-G Wang, “Texture information boosts video quality assessment,” in IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), pp. 2050-2054, 2022.
+```
+Meanwhile, you may also consider citing Li's work,
+```
+D. Li, T. Jiang, and M. Jiang, “Quality assessment of in-thewild videos,” in ACM International Conference on Multimedia (MM), pp. 2351-2359, 2019.
 ```
 
 License
