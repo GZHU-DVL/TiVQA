@@ -31,7 +31,7 @@ KonNViD-1k     SRCC: 0.818
              
 Acknowledgement
 ---
-This cobebase is heavily inspired by VSFA (Li et al., ACM2019).
+This cobebase is heavily inspired by [VSFA](https://github.com/lidq92/VSFA) (Li et al., ACM2019).
 
 Great appreciation for their excellent works.
 
