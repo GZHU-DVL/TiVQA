@@ -35,6 +35,8 @@ This cobebase is heavily inspired by [VSFA](https://github.com/lidq92/VSFA) (Li 
 
 Great appreciation for their excellent works.
 
+If you find this repo helpful to your research, we sincerely appreciate it if you cite our paper.:smiley:
+
 License
 ---
 This source code is made available for research purpose only.
