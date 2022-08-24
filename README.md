@@ -26,7 +26,7 @@ Please note that when extracting the content-aware and texture features, you can
 python main.py  --database==database --reduced_size=reduced_size --hidden_size==hidden_size \
                 --batch_size==batch_size  --tau==tau  --beta==beta
 ```
-
+Please note that our parameter tuning for different datasets is only to verify the conjecture in this paper that different datasets apply to different parameters.
 
 ## Requirment
 * torch==1.6.0
