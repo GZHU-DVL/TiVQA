@@ -8,11 +8,16 @@ Abstract: Automatically evaluating the quality of in-the-wild videos is challeng
 
 Usage
 ---
-Dataset Preparation
+## Dataset Preparation
 
 We test TiVQA on four datasets, including [KoNViD-1k](http://database.mmsp-kn.de/konvid-1k-database.html), [CVD2014](https://www.mv.helsinki.fi/home/msjnuuti/CVD2014/), [LIVE-Qualcomm](http://live.ece.utexas.edu/research/incaptureDatabase/index.html), and [LSVQ](https://github.com/baidut/PatchVQ), download the datasets from the official website. 
 
-First, you need to download the dataset and copy the local address into the videos_dir of [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py). Note that you need to specific datasets and corresponding paths, where the default dataset is koNViD-1k. Then run TiVQA.py to test the results. 
+First, you need to download the dataset and copy the local address into the videos_dir of [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py). Note that you need to specific datasets and corresponding paths, where the default dataset is koNViD-1k.
+
+```
+python Feature Extraction.py --database=database --frame_batch_size=16 \
+```
+Please note that when extracting the content-aware and texture features, you can choose the size of frame_batch_size according to your GPU. After running the [Features Extraction.py](https://github.com/GZHU-DVL/TiVQA/blob/main/Features%20Extraction.py), you can get the content-aware and texture features of each video in the directory "LBP_P10_R4_std_CNN_features_KoNViD-1k/".
 
 ## Requirment
 * torch==1.6.0
