@@ -37,6 +37,10 @@ Great appreciation for their excellent works.
 
 If you find this repo helpful to your research, we sincerely appreciate it if you cite our paper.:smiley:
 
+```
+A.-X. Zhang and Y.-G Wang, “Texture information boosts video quality assessment,” in IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), pp. 2050-2054, 2022.
+```
+
 License
 ---
 This source code is made available for research purpose only.
