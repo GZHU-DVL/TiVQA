@@ -30,12 +30,13 @@ class VideoDataset(Dataset):
 
         LBP = torch.Tensor()
         LBP = LBP.to(device)
-        if self.video_list[idx][11] == '_':
+        if self.video_list[idx][11] == '_':           #KoNViD-1k only
             video_list = self.video_list[idx][0:11] + '.mp4'
         elif self.video_list[idx][10] == '_':
             video_list = self.video_list[idx][0:10] + '.mp4'
         else:
             video_list = self.video_list[idx][0:9] + '.mp4'
+   #    video_list = self.video_list[idx]               #other dataset
         print(video_list)
         assert self.format == 'YUV420' or self.format == 'RGB'
         if self.format == 'YUV420':
@@ -51,7 +52,7 @@ class VideoDataset(Dataset):
                 middle = torch.unsqueeze(middle, 2)
                 middle = torch.cat((middle, middle, middle), dim=2)
                 middle = middle.unsqueeze(0)
-                LBP = torch.cat((LBP, middle), 0)
+                LBP = torch.cat((LBP, middle), 0)              #detect texture information
         LBP = LBP.cpu().numpy()
         LBP = np.asarray(LBP)
         video_mos = self.mos[idx]
@@ -92,11 +93,11 @@ class ResNet50(torch.nn.Module):
             x1 = model(x1)
             x2 = model(x2)
             if ii == 7:
-                features_mean = nn.functional.adaptive_avg_pool2d(x1, 1)
-                x2_mean = nn.functional.adaptive_avg_pool2d(x2, 1) #LBP_mean_features
-                features_std = global_std_pool2d(x1)
-                x2_std = global_std_pool2d(x2) #LBP_std_features
-                return features_mean, features_std, x2_mean, x2_std
+                content_aware_mean_features = nn.functional.adaptive_avg_pool2d(x1, 1)   #extract content-aware features
+                texture_mean_features = nn.functional.adaptive_avg_pool2d(x2, 1)         #extract texture features
+                content_aware_std_features = global_std_pool2d(x1)
+                texture_std_features = global_std_pool2d(x2)
+                return content_aware_mean_features, content_aware_std_features, texture_mean_features, texture_std_features
 
 
 def global_std_pool2d(x):
@@ -121,22 +122,22 @@ def get_features(video_data, video_LBP, frame_batch_size=16, device='cuda'):
         while frame_end < video_length:
             batch_video = video_data[frame_start:frame_end].to(device)
             batch_LBP = video_LBP[frame_start:frame_end].to(device)
-            features_mean, features_std, LBP_mean_features, LBP_std_features = extractor(batch_video, batch_LBP)
-            output1 = torch.cat((output1, features_mean), 0).to(device)
-            output2 = torch.cat((output2, features_std), 0).to(device)
-            output3 = torch.cat((output3, LBP_mean_features), 0).to(device)
-            output4 = torch.cat((output4, LBP_std_features), 0).to(device)
+            content_aware_mean_features, content_aware_std_features, texture_mean_features, texture_std_features = extractor(batch_video, batch_LBP)
+            output1 = torch.cat((output1, content_aware_mean_features), 0).to(device)  #content_aware featuers
+            output2 = torch.cat((output2, content_aware_std_features), 0).to(device)
+            output3 = torch.cat((output3, texture_mean_features), 0).to(device)                 #texture features
+            output4 = torch.cat((output4, texture_std_features), 0).to(device)
             frame_end += frame_batch_size
             frame_start += frame_batch_size
 
         last_batch = video_data[frame_start:video_length].to(device)
         last_LBP = video_LBP[frame_start:frame_end].to(device)
-        features_mean, features_std, LBP_mean_features, LBP_std_features = extractor(last_batch, last_LBP)
-        output1 = torch.cat((output1, features_mean), 0).to(device)
-        output2 = torch.cat((output2, features_std), 0).to(device)
-        output3 = torch.cat((output3, LBP_mean_features), 0).to(device)
-        output4 = torch.cat((output4, LBP_std_features), 0).to(device)
-        output = torch.cat((output1, output2, output3, output4), 1).to(device)
+        content_aware_mean_features, content_aware_std_features, texture_mean_features, texture_std_features = extractor(last_batch, last_LBP)
+        output1 = torch.cat((output1, content_aware_mean_features), 0).to(device)
+        output2 = torch.cat((output2, content_aware_std_features), 0).to(device)
+        output3 = torch.cat((output3, texture_mean_features), 0).to(device)
+        output4 = torch.cat((output4, texture_std_features), 0).to(device)
+        output = torch.cat((output1, output2, output3, output4), 1).to(device)  #concate texture and content-aware features
         output = output.squeeze()
         print(output)
     return output
@@ -147,7 +148,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=19920517)
     parser.add_argument('--database', default='KoNViD-1k', type=str,
                         help='database name (default: KoNViD-1k)')
-    parser.add_argument('--frame_batch_size', type=int, default=32,
+    parser.add_argument('--frame_batch_size', type=int, default=16,
                         help='frame batch size for feature extraction (default: 32)')
 
     parser.add_argument('--disable_gpu', action='store_true',
@@ -162,15 +163,15 @@ if __name__ == "__main__":
     torch.utils.backcompat.broadcast_warning.enabled = True
 
     if args.database == 'KoNViD-1k':
-        videos_dir = '/home/zax/KoNViD-1k_video/'  # videos dir
+        videos_dir = '/data/aoxiang/KoNViD-1k_video/'  # videos dir
         features_dir = 'LBP_P10_R4_std_CNN_features_KoNViD-1k/'  # features dir
-        datainfo = 'data/KoNViD-1kinfo.mat'  # database info: video_names, scores; video format, width, height, index, ref_ids, max_len, etc.
+        datainfo = 'data/KoNViD-1kinfo.mat'
     if args.database == 'CVD2014':
-        videos_dir = '/home/zax/CVD2014/'
+        videos_dir = '/CVD2014/'
         features_dir = 'LBP_P10_R4_std_CNN_features_CVD2014/'
         datainfo = 'data/CVD2014info.mat'
     if args.database == 'LIVE-Quaclomm':
-        videos_dir = '/home/zax/LIVE-Quaclomm/'
+        videos_dir = '/LIVE-Quaclomm/'
         features_dir = 'LBP_P10_R4_std_CNN_features_LIVE-Quaclomm/'
         datainfo = 'data/LIVE-Qualcomminfo.mat'
 
