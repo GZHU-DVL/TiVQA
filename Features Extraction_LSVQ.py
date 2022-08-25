@@ -157,7 +157,7 @@ if __name__ == "__main__":
     torch.utils.backcompat.broadcast_warning.enabled = True
 
     if args.database == 'LSVQ':
-        videos_dir = '/data/aoxiang/LSVQ/'  # videos dir
+        videos_dir = 'LSVQ/'  # videos dir
         features_dir = 'LBP_P10_R4_std_CNN_features_LSVQ/'  # features dir
         datainfo1 = '/data/aoxiang/LSVQ/labels_train_test.csv'
         datainfo2 = '/data/aoxiang/LSVQ/labels_test_1080p.csv'
