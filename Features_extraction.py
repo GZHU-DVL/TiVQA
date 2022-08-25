@@ -36,7 +36,7 @@ class VideoDataset(Dataset):
             video_list = self.video_list[idx][0:10] + '.mp4'
         else:
             video_list = self.video_list[idx][0:9] + '.mp4'
-   #    video_list = self.video_list[idx]               #other dataset
+        #video_list = self.video_list[idx]               #other dataset
         print(video_list)
         assert self.format == 'YUV420' or self.format == 'RGB'
         if self.format == 'YUV420':
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     torch.utils.backcompat.broadcast_warning.enabled = True
 
     if args.database == 'KoNViD-1k':
-        videos_dir = '/data/aoxiang/KoNViD-1k_video/'  # videos dir
+        videos_dir = 'KoNViD-1k_video/'  # videos dir
         features_dir = 'LBP_P10_R4_std_CNN_features_KoNViD-1k/'  # features dir
         datainfo = 'data/KoNViD-1kinfo.mat'
     if args.database == 'CVD2014':
