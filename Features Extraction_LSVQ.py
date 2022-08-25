@@ -100,7 +100,7 @@ def global_std_pool2d(x):
                      dim=2, keepdim=True)
 
 
-def get_features(video_data, video_LBP, frame_batch_size=1, device='cuda'):
+def get_features(video_data, video_LBP, frame_batch_size=16, device='cuda'):
     """feature extraction"""
     extractor = ResNet50().to(device)
     video_length = video_data.shape[0]
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=19920517)
     parser.add_argument('--database', default='LSVQ', type=str,
                         help='database name (default: KoNViD-1k)')
-    parser.add_argument('--frame_batch_size', type=int, default=1,
+    parser.add_argument('--frame_batch_size', type=int, default=16,
                         help='frame batch size for feature extraction (default: 32)')
 
     parser.add_argument('--disable_gpu', action='store_true',
