@@ -35,6 +35,11 @@ python test_performance.py  --database==database --reduced_size=reduced_size --h
                 --batch_size==batch_size  --tau==tau  --beta==beta
 ```
 
+At the same time, we give a version of the file for the specific score of the test video, the model is trained by KoNViD-1k. The operation is as follows,
+```
+python test_demo.py --batch_size==batch_size \
+```
+
 ### Requirment
 * torch==1.6.0
 * torchvision==0.7.0
