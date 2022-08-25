@@ -12,7 +12,6 @@ from argparse import ArgumentParser
 from skimage.feature import local_binary_pattern
 from Features_Extraction import get_features
 import time
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 class ANN(nn.Module):
     def __init__(self, input_size=8192, reduced_size=248, n_ANNlayers=1, dropout_p=0.5):
         super(ANN, self).__init__()
@@ -69,7 +68,7 @@ if __name__ == "__main__":
     parser.add_argument("--hidden_size", type=int, default=64)
     parser.add_argument('--model', default='TiVQA', type=str, help='model name (default: TiVQA)')
     parser.add_argument('--video_format', default='RGB', type=str, help='video format: GRB or YUV420 (default: RGB)')
-    parser.add_argument('--video_path', default='/data/aoxiang/KoNViD-1k_video/10533906564.mp4', type=str, help='video path (default: data/test.mp4)')
+    parser.add_argument('--video_path', default='data/test.mp4', type=str, help='video path (default: data/test.mp4)')
     parser.add_argument('--video_width', type=int, default=None, help='video width')
     parser.add_argument('--video_height', type=int, default=None, help='video height')
     parser.add_argument('--disable_gpu', action='store_true', help='flag whether to disable GPU')
