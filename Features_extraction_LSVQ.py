@@ -140,13 +140,9 @@ def get_features(video_data, video_LBP, frame_batch_size=16, device='cuda'):
 if __name__ == "__main__":
     parser = ArgumentParser(description='"Extracting Content-Aware Perceptual Features and Texture Features')
     parser.add_argument("--seed", type=int, default=19920517)
-    parser.add_argument('--database', default='LSVQ', type=str,
-                        help='database name (default: KoNViD-1k)')
-    parser.add_argument('--frame_batch_size', type=int, default=16,
-                        help='frame batch size for feature extraction (default: 32)')
-
-    parser.add_argument('--disable_gpu', action='store_true',
-                        help='flag whether to disable GPU')
+    parser.add_argument('--database', default='LSVQ', type=str, help='database name (default: KoNViD-1k)')
+    parser.add_argument('--frame_batch_size', type=int, default=16, help='frame batch size for feature extraction (default: 32)')
+    parser.add_argument('--disable_gpu', action='store_true', help='flag whether to disable GPU')
     args = parser.parse_args()
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
